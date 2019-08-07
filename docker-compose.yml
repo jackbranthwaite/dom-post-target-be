@@ -2,28 +2,28 @@ version: '3'
 services:
 
   #PHP Service
-  project-php:
+  {project-slug}-php:
     build:
       context: .
       dockerfile: .docker/php/Dockerfile
     image: fff.agency/php
-    container_name: project-app
+    container_name: {project-slug}-php
     restart: unless-stopped
     tty: true
     environment:
-      SERVICE_NAME: prooject-app
+      SERVICE_NAME: {project-slug}-php
       SERVICE_TAGS: dev
     working_dir: /var/www
     volumes:
       - ./:/var/www
       - .docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
-      - project-network
+      - {project-slug}-network
 
   #Nginx Service
-  project-web:
+  {project-slug}-web:
     image: nginx:alpine
-    container_name: project-web
+    container_name: {project-slug}-web
     restart: unless-stopped
     tty: true
     ports:
@@ -33,30 +33,30 @@ services:
       - ./:/var/www
       - .docker/nginx/conf.d/:/etc/nginx/conf.d/
     networks:
-      - project-network
+      - {project-slug}-network
 
   #MySQL Service
-  project-mysql:
+  {project-slug}-mysql:
     image: mysql:5.7.22
-    container_name: project-mysql
+    container_name: {project-slug}-mysql
     restart: unless-stopped
     tty: true
     ports:
       - "3306:3306"
     environment:
       MYSQL_DATABASE: laravel
-      MYSQL_ROOT_PASSWORD: 3*Flaravelyoufruitcake
+      MYSQL_ROOT_PASSWORD: f0rmfunfunc1on!
       SERVICE_TAGS: dev
-      SERVICE_NAME: project-mysql
+      SERVICE_NAME: {project-slug}-mysql
     volumes:
       - mysqldata:/var/lib/mysql
       - ./.docker/mysql/my.cnf:/etc/mysql/my.cnf
     networks:
-      - project-network
+      - {project-slug}-network
 
 #Docker Networks
 networks:
-  project-network:
+  {project-slug}-network:
     driver: bridge
 
 #Volumes
