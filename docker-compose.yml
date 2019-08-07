@@ -1,0 +1,65 @@
+version: '3'
+services:
+
+  #PHP Service
+  project-php:
+    build:
+      context: .
+      dockerfile: .docker/php/Dockerfile
+    image: fff.agency/php
+    container_name: project-app
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: prooject-app
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+      - .docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - project-network
+
+  #Nginx Service
+  project-web:
+    image: nginx:alpine
+    container_name: project-web
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www
+      - .docker/nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - project-network
+
+  #MySQL Service
+  project-mysql:
+    image: mysql:5.7.22
+    container_name: project-mysql
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: 3*Flaravelyoufruitcake
+      SERVICE_TAGS: dev
+      SERVICE_NAME: project-mysql
+    volumes:
+      - mysqldata:/var/lib/mysql
+      - ./.docker/mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - project-network
+
+#Docker Networks
+networks:
+  project-network:
+    driver: bridge
+
+#Volumes
+volumes:
+  mysqldata:
+    driver: local
