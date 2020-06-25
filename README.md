@@ -7,6 +7,24 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+## Get started
+
+To get started with a new project, clone this repository into a new directory with docker installed on your local machine.
+
+1. Find and replace `{project-slug}` with a short ~3 character project ID to represent the application name. (e.g "My awesome app" -> "maa", "formfunfunction" -> "fff").
+2. Copy `.env.example` to `.env`.
+   ```bash
+   cp .env.example .env
+   ```
+3. Initialize composer (install dependencies and generate composer.lock)
+    ```bash
+    docker run --rm -v $(pwd):/app composer install
+    ```
+4. Launch docker-compose
+   ```bash
+   docker-compose up -d
+   ```
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
