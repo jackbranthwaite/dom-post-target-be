@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: .docker/php/Dockerfile
-    image: fff.agency/php
+    image: fff.agency/php-laravel
     container_name: {project-slug}-php
     restart: unless-stopped
     tty: true
@@ -83,4 +83,6 @@ networks:
 #Volumes
 volumes:
   mysqldata:
+    driver: local
+  redisdata:
     driver: local

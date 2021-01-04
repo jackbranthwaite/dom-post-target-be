@@ -18,11 +18,15 @@ To get started with a new project, clone this repository into a new directory wi
    ```
 3. Initialize composer (install dependencies and generate composer.lock)
     ```bash
-    docker run --rm -v $(pwd):/app composer install
+    docker run --rm -v $(pwd):/app composer update
     ```
 4. Launch docker-compose
    ```bash
    docker-compose up -d
+   ```
+5. Generate application key
+   ```bash
+   docker exec {project-slug}-php php artisan key:generate
    ```
 
 ## About Laravel
