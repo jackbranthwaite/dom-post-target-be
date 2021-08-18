@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
 
   #PHP Service
@@ -37,7 +37,7 @@ services:
 
   #MySQL Service
   {project-slug}-mysql:
-    image: mysql:8.0
+    image: mariadb:10.5.8
     container_name: {project-slug}-mysql
     restart: unless-stopped
     tty: true
