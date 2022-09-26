@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,4 +19,9 @@ use Illuminate\Support\Facades\Route;
 
 // Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
+
+    // User routes
+    Route::get('/user', [UserController::class, 'show']);
+    // Route::patch('/user' . UserController::class, 'update');
+    Route::get('/user/{id}', [UserController::class, 'show']);
 });
