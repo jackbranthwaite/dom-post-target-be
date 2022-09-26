@@ -61,7 +61,7 @@ return [
     |
     */
 
-    'home' => env('SPA_URL') . '/home',
+    'home' => RouteServiceProvider::HOME,
 
     /*
     |--------------------------------------------------------------------------
@@ -135,8 +135,8 @@ return [
         Features::registration(),
         Features::resetPasswords(),
         // Features::emailVerification(),
-        // Features::updateProfileInformation(),
-        // Features::updatePasswords(),
+        Features::updateProfileInformation(),
+        Features::updatePasswords(),
         // Features::twoFactorAuthentication([
         //     'confirm' => true,
         //     'confirmPassword' => true,
