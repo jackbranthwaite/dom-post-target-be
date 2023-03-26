@@ -9,9 +9,7 @@ use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
-    /**
-     * Get the pepeha record associated with the user.
-     */
+
     public function show(Request $request)
 
     {
