@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
+
 class DailyLettersResource extends JsonResource
 {
     /**
@@ -15,7 +16,6 @@ class DailyLettersResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
             'letters' => $this->letters,
         ];
     }

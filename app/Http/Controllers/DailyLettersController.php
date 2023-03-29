@@ -17,13 +17,14 @@ class DailyLettersController extends Controller
 
     {
         $user = Auth::user();
-        if (!$user->is_admin) return;
+        if ($user->is_admin) {
+            $dailyLetters = new DailyLetters([
+                'letters' => $request->input('letters')
+            ]);
 
-        $dailyLetters = new DailyLetters([
-            'letters' => $request->input('letters')
-        ]);
+            $dailyLetters->save();
 
-
-        return new DailyLettersResource($dailyLetters);
+            return new DailyLettersResource($dailyLetters);
+        };
     }
 }
