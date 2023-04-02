@@ -23,8 +23,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     // User routes
     Route::get('/user', [UserController::class, 'show']);
-    // Route::patch('/user' . UserController::class, 'update');
     Route::get('/user/{id}', [UserController::class, 'show']);
+    // Route::patch('/user' . UserController::class, 'update');
     // Letter routes
     Route::middleware('auth:sanctum')->post('/daily-letters', [DailyLettersController::class, 'store']);
+    Route::middleware('auth:sanctum')->get('/daily-letters', [DailyLettersController::class, 'show']);
 });
