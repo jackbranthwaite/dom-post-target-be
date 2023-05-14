@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CorrectGuessController;
 use App\Http\Controllers\DailyLettersController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -29,4 +30,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // Letter routes
     Route::middleware('auth:sanctum')->post('/daily-letters', [DailyLettersController::class, 'store']);
     Route::middleware('auth:sanctum')->get('/daily-letters', [DailyLettersController::class, 'show']);
+
+    // Guess Routes
+    Route::middleware('auth:sanctum')->post('/correct-guess', [CorrectGuessController::class, 'store']);
 });
