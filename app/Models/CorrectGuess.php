@@ -14,5 +14,6 @@ class CorrectGuess extends Model
         'minutes',
         'seconds',
         'user_id',
+        'guess'
     ];
 }

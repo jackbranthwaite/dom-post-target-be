@@ -20,6 +20,7 @@ class CorrectGuessController extends Controller
                 'hours' => $request->input('hours'),
                 'minutes' => $request->input('minutes'),
                 'seconds' => $request->input('seconds'),
+                'guess' => $request->input('guess'),
                 'user_id' => $user->id
             ]);
 

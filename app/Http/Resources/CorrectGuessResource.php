@@ -18,7 +18,8 @@ class CorrectGuessResource extends JsonResource
             'hours' => $this->hours,
             'minutes' => $this->minutes,
             'seconds' => $this->seconds,
-            'user_id' => $this->user_id
+            'user_id' => $this->user_id,
+            'guess' => $this->guess
         ];
     }
 }
