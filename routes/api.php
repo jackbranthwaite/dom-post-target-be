@@ -33,4 +33,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     // Guess Routes
     Route::middleware('auth:sanctum')->post('/correct-guess', [CorrectGuessController::class, 'store']);
+    Route::middleware('auth:sanctum')->get('/correct-guess', [CorrectGuessController::class, 'show']);
 });
